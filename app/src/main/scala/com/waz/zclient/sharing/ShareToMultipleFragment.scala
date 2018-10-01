@@ -264,7 +264,7 @@ class ShareToMultipleAdapter(context: Context, filter: Signal[String])(implicit 
   lazy val zms = inject[Signal[ZMessaging]]
   lazy val conversations = for{
     z <- zms
-    conversations <- Signal.future(z.convsContent.storage.getAllConvs)
+    conversations <- Signal.future(z.convsContent.storage.list)
     f <- filter
   } yield
     conversations
